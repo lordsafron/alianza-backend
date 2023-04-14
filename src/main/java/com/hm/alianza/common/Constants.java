@@ -24,4 +24,6 @@ public class Constants {
 
     public static final String SUCCESS = "SUCCESS";
 
+    public static final String DB_ERROR = "Error en banco de datos";
+
 }

@@ -12,6 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+import static com.hm.alianza.common.Constants.DB_ERROR;
+
 @Slf4j
 @Service
 @AllArgsConstructor
@@ -27,7 +29,7 @@ public class ClientServiceImpl implements IClientService {
         } catch (Exception ex) {
             log.error("ClientServiceImpl::findBySharedId --sharedId [{}] --exCause [{}] --exMessage [{}]",
                     sharedId, ex.getCause(), ex.getMessage());
-            throw new DatabaseException("Error en banco de datos");
+            throw new DatabaseException(DB_ERROR);
         }
 
     }
@@ -39,7 +41,7 @@ public class ClientServiceImpl implements IClientService {
             return clientRepository.save(clientEntity);
         } catch (Exception ex) {
             log.error("ClientServiceImpl::save --exCause [{}] --exMessage [{}]", ex.getCause(), ex.getMessage());
-            throw new DatabaseException("Error en banco de datos");
+            throw new DatabaseException(DB_ERROR);
         }
     }
 
@@ -49,7 +51,7 @@ public class ClientServiceImpl implements IClientService {
             return clientRepository.findAll();
         } catch (Exception ex) {
             log.error("ClientServiceImpl::save --exCause [{}] --exMessage [{}]", ex.getCause(), ex.getMessage());
-            throw new DatabaseException("Error en banco de datos");
+            throw new DatabaseException(DB_ERROR);
         }
     }
 }
